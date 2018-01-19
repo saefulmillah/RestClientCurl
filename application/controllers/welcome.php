@@ -25,37 +25,24 @@ class Welcome extends CI_Controller {
 
 		$curlHandle = curl_init($url);
 
+    // header
 		$header = array(
 		    'Accept: application/json',
 		    'Content-Type: application/x-www-form-urlencoded',
 		    'Authorization: Basic YWRtaW46YWRtaW4xMjM='
 		);
-		// curl_setopt(ch, option, value)
-		// pass header variable in curl method
-		
-	    // curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $header);
 
+    // parameter
 		$data = array(
 	            'billto'       	=> 'ACE',
 	            'container_no'	=>  'NYKU823017',
-	            'bl_no' 		=>  'OOLU2598413640',
+	            'bl_no' 				=>  'OOLU2598413640',
 	            'gate_in_cdp' 	=> '2018-01-2018');
 
-	    $insert =  $this->curl->simple_post($this->API, $data, array(CURLOPT_HTTPHEADER => $header)); 
-		// $post_data = array(
-	 //        'firstname' => 'John',
-	 //        'lastname' => 'Doe'
-	 //    );
+    // method of send
+		$insert =  $this->curl->simple_post($this->API, $data, array(CURLOPT_HTTPHEADER => $header));
 
-	 //    curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $header);		
-
-		// $ch = curl_init();
-	    
-	    // curl_setopt($curlHandle, CURLOPT_POST, TRUE);   //is it optional?
-	    // curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
-	    // curl_exec($curlHandle);
-	    // curl_close($curlHandle);
-	        
+    // result message
 		echo json_encode($insert);
 	}
 }
